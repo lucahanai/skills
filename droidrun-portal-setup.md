@@ -16,7 +16,7 @@
 
 安装完成后，打开 Droidrun Portal 应用。您将看到主界面显示 **"Accessibility Service Not Enabled"**（辅助功能未启用）的提示。
 
-![步骤1](../static/cy-mobile-use/cy-mobile-use-1.jpg)
+![步骤1](static/cy-mobile-use/cy-mobile-use-1.jpg)
 
 点击 **"Enable Now"**（立即启用）按钮开始设置。
 
@@ -26,7 +26,7 @@
 
 系统将打开手机的**辅助功能**设置页面。在此页面中，找到并点击**"已安装的应用程序"**（Installed Apps）选项。
 
-![步骤2](../static/cy-mobile-use/cy-mobile-use-2.jpg)
+![步骤2](static/cy-mobile-use/cy-mobile-use-2.jpg)
 
 ---
 
@@ -34,7 +34,7 @@
 
 在已安装的应用程序列表中，找到并点击 **Droidrun Portal**。
 
-![步骤3](../static/cy-mobile-use/cy-mobile-use-3.jpg)
+![步骤3](static/cy-mobile-use/cy-mobile-use-3.jpg)
 
 ---
 
@@ -44,7 +44,7 @@
 - 主开关（默认关闭）
 - **Droidrun Portal 快捷方式**开关（默认关闭）
 
-![步骤4](../static/cy-mobile-use/cy-mobile-use-4.jpg)
+![步骤4](static/cy-mobile-use/cy-mobile-use-4.jpg)
 
 首先打开顶部的**主开关**。
 
@@ -54,7 +54,7 @@
 
 系统会弹出权限请求对话框，询问是否允许 Droidrun Portal **"完全控制您的设备"**。
 
-![步骤5](../static/cy-mobile-use/cy-mobile-use-5.jpg)
+![步骤5](static/cy-mobile-use/cy-mobile-use-5.jpg)
 
 此权限包含：
 - **查看和控制屏幕**：获取屏幕内容并执行点击、滑动等操作
@@ -68,7 +68,7 @@
 
 授权完成后，返回 Droidrun Portal 设置页面，确认开关已显示为**开启状态**。
 
-![步骤6](../static/cy-mobile-use/cy-mobile-use-6.jpg)
+![步骤6](static/cy-mobile-use/cy-mobile-use-6.jpg)
 
 ---
 
@@ -76,7 +76,7 @@
 
 返回 Droidrun Portal 主界面，此时 **Accessibility Service** 应显示为已启用状态。
 
-![步骤7](../static/cy-mobile-use/cy-mobile-use-7.jpg)
+![步骤7](static/cy-mobile-use/cy-mobile-use-7.jpg)
 
 您将看到：
 - ✅ Accessibility Service：已启用
@@ -91,7 +91,7 @@
 
 点击 **"Droidrun Keyboard not active"** 提示区域，或进入系统键盘设置：
 
-![步骤8](../static/cy-mobile-use/cy-mobile-use-8.jpg)
+![步骤8](static/cy-mobile-use/cy-mobile-use-8.jpg)
 
 ---
 
@@ -99,7 +99,7 @@
 
 在输入法选择菜单中，选择 **"Droidrun Keyboard"**。
 
-![步骤9](../static/cy-mobile-use/cy-mobile-use-9.jpg)
+![步骤9](static/cy-mobile-use/cy-mobile-use-9.jpg)
 
 注意：系统可能会提示此输入法可能收集输入内容，这是正常的，因为自动化工具需要获取输入内容。
 
@@ -109,7 +109,7 @@
 
 设置完成后，返回 Droidrun Portal 主界面。此时所有服务应该都已正确配置：
 
-![步骤10](../static/cy-mobile-use/cy-mobile-use-10.jpg)
+![步骤10](static/cy-mobile-use/cy-mobile-use-10.jpg)
 
 您将看到：
 - ✅ Accessibility Service：已启用
