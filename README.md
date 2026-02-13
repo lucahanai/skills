@@ -2,21 +2,19 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-> 模块化技能库 - 每个目录一个可复用的技能组件
-
 ## 📚 简介
 
-这是一个技能库项目，**每个目录代表一个独立的技能（Skill）**。每个技能都是自包含的模块，包含实现代码、文档和测试，可直接复制使用。
+这是一个技能库项目，**每个目录代表一个独立的技能（Skill）**。我所有常用技能都会放到这里。
 
 ## 🗂️ 技能列表
 
 | 技能 | 描述 | 状态 |
 |------|------|------|
-| [mobile-use](./mobile-use) | 通过 USB 控制 Android 手机 | ✅ |
+| [cy-mobile-use](./cy-mobile-use) | 通过 USB 控制 Android 手机 | ✅ |
 
 ---
 
-## 📱 mobile-use
+## 📱 cy-mobile-use
 
 通过 USB 连接控制 Android 手机的自动化技能。
 

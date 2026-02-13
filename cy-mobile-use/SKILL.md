@@ -1,5 +1,5 @@
 ---
-name: mobile-use
+name: cy-mobile-use
 description: Control Android devices programmatically via Droidrun Portal. Use for UI automation (tap, swipe, input), app management (launch, list), screen capture, and accessibility tree inspection. Supports HTTP REST API and WebSocket JSON-RPC protocols.
 ---
 
