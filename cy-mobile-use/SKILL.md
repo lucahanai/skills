@@ -1,30 +1,28 @@
 ---
 name: cy-mobile-use
-description: Control Android devices programmatically via Droidrun Portal. Use for UI automation (tap, swipe, input), app management (launch, list), screen capture, and accessibility tree inspection. Supports WebSocket JSON-RPC and HTTP REST API protocols.
+description: Control Android devices programmatically via Droidrun Portal. Use for UI automation (tap, swipe, input), app management (launch, list), screen capture, and accessibility tree inspection. Supports HTTP REST API and WebSocket JSON-RPC protocols.
 ---
 
 # Mobile Use - Android Device Control
 
 ## Overview
 
-This skill enables programmatic control of Android devices through the **Droidrun Portal** app. It provides dual API interfaces (WebSocket JSON-RPC and HTTP REST) for comprehensive device automation including UI interaction, app management, and screen capture.
+This skill enables programmatic control of Android devices through the **Droidrun Portal** app. It provides dual API interfaces (HTTP REST and WebSocket JSON-RPC) for comprehensive device automation including UI interaction, app management, and screen capture.
 
 ## Quick Start
 
 ### Prerequisites
 
-1. **Install Droidrun Portal** on your Android device
-2. **Enable Developer Options** and **USB Debugging** on the device
-3. **Connect via ADB**:
+1. **Connect via ADB**:
    ```bash
    adb devices  # Should show your device
    ```
-4. **Set up port forwarding**:
+2. **Set up port forwarding**:
    ```bash
    adb forward tcp:8080 tcp:8080  # HTTP API
    adb forward tcp:8081 tcp:8081  # WebSocket API
    ```
-5. **Get authentication token**:
+3. **Get authentication token**:
    ```bash
    adb shell content query --uri content://com.droidrun.portal/auth_token
    ```
@@ -40,6 +38,45 @@ adb shell content query --uri content://com.droidrun.portal/auth_token
 ```
 
 ## API Methods
+
+### HTTP API (Port 8080)
+
+**Authentication**: Header `Authorization: Bearer TOKEN`
+
+**GET Endpoints** (no auth required for `/ping`):
+```bash
+curl http://localhost:8080/ping
+curl -H "Authorization: Bearer TOKEN" http://localhost:8080/version
+curl -H "Authorization: Bearer TOKEN" http://localhost:8080/state
+curl -H "Authorization: Bearer TOKEN" http://localhost:8080/a11y_tree
+curl -H "Authorization: Bearer TOKEN" http://localhost:8080/packages
+curl -H "Authorization: Bearer TOKEN" http://localhost:8080/screenshot > screenshot.png
+```
+
+**POST Endpoints**:
+```bash
+# Tap
+curl -X POST -H "Authorization: Bearer TOKEN" \
+  -d "x=540&y=1200" http://localhost:8080/tap
+
+# Swipe
+curl -X POST -H "Authorization: Bearer TOKEN" \
+  -d "startX=540&startY=1500&endX=540&endY=600&duration=300" \
+  http://localhost:8080/swipe
+
+# Launch app
+curl -X POST -H "Authorization: Bearer TOKEN" \
+  -d "package=com.twitter.android" http://localhost:8080/app
+
+# Keyboard input (base64 encoded)
+curl -X POST -H "Authorization: Bearer TOKEN" \
+  -d "base64_text=SGVsbG8gV29ybGQ=&clear=true" \
+  http://localhost:8080/keyboard/input
+
+# Press key (e.g., Enter = 66, Backspace = 67)
+curl -X POST -H "Authorization: Bearer TOKEN" \
+  -d "key_code=66" http://localhost:8080/keyboard/key
+```
 
 ### WebSocket API (Port 8081)
 
@@ -130,45 +167,6 @@ Error response format:
 2. **Response format**: Not standard JSON-RPC. Uses `status` field instead of `error` field for errors:
    - Success: `{"id": "...", "status": "success", "result": ...}`
    - Error: `{"id": "...", "status": "error", "error": "message"}`
-
-### HTTP API (Port 8080)
-
-**Authentication**: Header `Authorization: Bearer TOKEN`
-
-**GET Endpoints** (no auth required for `/ping`):
-```bash
-curl http://localhost:8080/ping
-curl -H "Authorization: Bearer TOKEN" http://localhost:8080/version
-curl -H "Authorization: Bearer TOKEN" http://localhost:8080/state
-curl -H "Authorization: Bearer TOKEN" http://localhost:8080/a11y_tree
-curl -H "Authorization: Bearer TOKEN" http://localhost:8080/packages
-curl -H "Authorization: Bearer TOKEN" http://localhost:8080/screenshot > screenshot.png
-```
-
-**POST Endpoints**:
-```bash
-# Tap
-curl -X POST -H "Authorization: Bearer TOKEN" \
-  -d "x=540&y=1200" http://localhost:8080/tap
-
-# Swipe
-curl -X POST -H "Authorization: Bearer TOKEN" \
-  -d "startX=540&startY=1500&endX=540&endY=600&duration=300" \
-  http://localhost:8080/swipe
-
-# Launch app
-curl -X POST -H "Authorization: Bearer TOKEN" \
-  -d "package=com.twitter.android" http://localhost:8080/app
-
-# Keyboard input (base64 encoded)
-curl -X POST -H "Authorization: Bearer TOKEN" \
-  -d "base64_text=SGVsbG8gV29ybGQ=&clear=true" \
-  http://localhost:8080/keyboard/input
-
-# Press key (e.g., Enter = 66, Backspace = 67)
-curl -X POST -H "Authorization: Bearer TOKEN" \
-  -d "key_code=66" http://localhost:8080/keyboard/key
-```
 
 ## Common Key Codes
 
